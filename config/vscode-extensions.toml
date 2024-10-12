@@ -1,9 +1,6 @@
 vscode_version = "1.94.2"
 
 [[extensions]]
-publisher_name = "bbenoist"
-extension_name = "nix"
-[[extensions]]
 publisher_name = "ms-vscode-remote"
 extension_name = "remote-ssh"
 [[extensions]]
@@ -51,4 +48,30 @@ extension_name = "vscode-custom-css"
 [[extensions]]
 publisher_name = "tamasfe"
 extension_name = "even-better-toml"
-
+[[extensions]]
+publisher_name = "kamadorueda"
+extension_name = "alejandra"
+[[extensions]]
+publisher_name = "jnoortheen"
+extension_name = "nix-ide"
+[[extensions]]
+publisher_name = "skellock"
+extension_name = "just"
+[[extensions]]
+publisher_name = "arr"
+extension_name = "marksman"
+[[extensions]]
+publisher_name = "bluebrown"
+extension_name = "yamlfmt"
+[[extensions]]
+publisher_name = "fnando"
+extension_name = "linter"
+[[extensions]]
+publisher_name = "bluebrown"
+extension_name = "yamlfmt"
+[[extensions]]
+publisher_name = "esbenp"
+extension_name = "prettier-vscode"
+[[extensions]]
+publisher_name = "mtxr"
+extension_name = "sqltools"

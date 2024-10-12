@@ -4,11 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
-  outputs = {
-    self,
-    flake-parts,
-    ...
-  } @ inputs:
+  outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
@@ -43,7 +39,6 @@
           src = ./.;
           buildInputs = [
             pkgs.makeWrapper
-            pkgs.jq
           ];
           installPhase = ''
             mkdir -p $out/bin
@@ -53,6 +48,8 @@
               ${code-with-extensions}/bin/code --user-data-dir ~/.config/vscode/default "$@"
             ''} $out/bin/code
             chmod +x $out/bin/code
+            wrapProgram $out/bin/code \
+              --prefix PATH : ${lib.makeBinPath [pkgs.nixd pkgs.jq pkgs.alejandra pkgs.marksman pkgs.yamlfmt pkgs.yamllint pkgs.vale]}
           '';
           meta = {
             mainProgram = "code";
@@ -64,13 +61,11 @@
         };
         packages = {
           default = custom-vscode;
-          # default = code-with-extensions;
         };
         apps = {
           default = {
             type = "app";
             program = "${custom-vscode}/bin/code";
-            # program = code-with-extensions;
           };
         };
       };
