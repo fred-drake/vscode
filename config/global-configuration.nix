@@ -35,7 +35,8 @@ in {
     mtxr.sqltools
   ];
 
-  settings = {
+  globalSettings = {
+    "extensions.autoUpdate" = false;
     "window.commandCenter" = true;
     "workbench.iconTheme" = "material-icon-theme";
     "workbench.colorTheme" = "Jetbrains Dark Theme";
@@ -80,10 +81,5 @@ in {
     "alejandra.program" = "alejandra";
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "nixd";
-    # "linter.linters" = {
-    #   "yamllint" = {
-    #     "enabled" = true;
-    #   };
-    # };
   };
 }

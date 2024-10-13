@@ -75,3 +75,15 @@ extension_name = "prettier-vscode"
 [[extensions]]
 publisher_name = "mtxr"
 extension_name = "sqltools"
+[[extensions]]
+publisher_name = "ms-dotnettools"
+extension_name = "csharp"
+[[extensions]]
+publisher_name = "ms-dotnettools"
+extension_name = "csdevkit"
+[[extensions]]
+publisher_name = "ms-dotnettools"
+extension_name = "vscode-dotnet-runtime"
+[[extensions]]
+publisher_name = "csharpier"
+extension_name = "csharpier-vscode"
