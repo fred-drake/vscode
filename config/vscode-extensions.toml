@@ -87,3 +87,19 @@ extension_name = "vscode-dotnet-runtime"
 [[extensions]]
 publisher_name = "csharpier"
 extension_name = "csharpier-vscode"
+[[extensions]]
+publisher_name = "rust-lang"
+extension_name = "rust-analyzer"
+# NOTE: This does not work with nix4vscode -- using nix-vscode-extensions instead
+# [[extensions]]
+# publisher_name = "vadimcn"
+# extension_name = "vscode-lldb"
+[[extensions]]
+publisher_name = "fill-labs"
+extension_name = "dependi"
+[[extensions]]
+publisher_name = "usernamehw"
+extension_name = "errorlens"
+[[extensions]]
+publisher_name = "gruntfuggly"
+extension_name = "todo-tree"

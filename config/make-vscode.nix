@@ -8,6 +8,7 @@
     additionalExtensions ? [],
     additionalVSCodeSettings ? {},
     additionalPackages ? [],
+    environmentVars ? {},
     impureExtensions ? false,
   }: let
     defaultPackages = with pkgs; [
@@ -43,6 +44,9 @@
         '')
         allExtensions}
     '';
+
+    # Function to generate --set arguments for wrapProgram
+    generateSetArgs = vars: lib.concatStringsSep " " (lib.mapAttrsToList (name: value: "--set ${name} ${value}") vars);
   in
     pkgs.stdenv.mkDerivation {
       name = "code";
@@ -51,6 +55,7 @@
         pkgs.makeWrapper
       ];
       # TODO this could probably be cleaner
+      # TODO does this work for other users, with $HOME evaluated at install time?  It might, if each user installs via home-manager, but would need to test.
       installPhase =
         if impureExtensions
         then ''
@@ -65,7 +70,8 @@
           ''} $out/bin/code
           chmod +x $out/bin/code
           wrapProgram $out/bin/code \
-            --prefix PATH : ${lib.makeBinPath allPackages}
+            --prefix PATH : ${lib.makeBinPath allPackages} \
+            ${generateSetArgs environmentVars}
         ''
         else ''
           mkdir -p $out/bin
@@ -76,7 +82,8 @@
           ''} $out/bin/code
           chmod +x $out/bin/code
           wrapProgram $out/bin/code \
-            --prefix PATH : ${lib.makeBinPath allPackages}
+            --prefix PATH : ${lib.makeBinPath allPackages} \
+            ${generateSetArgs environmentVars}
         '';
       meta = {
         mainProgram = "code";

@@ -27,12 +27,18 @@ nix run github:fred-drake/vscode# -- .
 
 The default configuration performs editing without settings for any particular language or technology. The following configurations a development environment in their respective language or technology stack:
 
-- Rust - TBD
-- C# - TBD
+- Rust - `nix run github:fred-drake/vscode#rust`
+- C# - `nix run github:fred-drake/vscode#csharp`
 - Go - TBD
 - Python - TBD
 - Javascript - TBD
 - Infrastructure as Code - TBD
+
+## User Data
+
+All user data is stored in `~/.config/vscode/<config_name>`. This includes extensions, settings, keybindings, application state, etc. The decision to have a hard separation by configuration prevented weird issues with extensions for different configurations bleeding into each other when open at the same time. This comes at the cost of disk space.
+
+VSCode doesn't separate configurations into neater folders like `~/.local` and `~/.config`, so the `settings.json` that is generated from the configuration must cohabitate with other files that will be perpetually modified by VSCode itself.
 
 ### Install Multiple Configurations
 
@@ -63,18 +69,19 @@ And add it to your home-manager imports:
 
 ## Technology Support
 
-| Technology | Formatter        | Language Server  | Nix Configuration |
-| ---------- | ---------------- | ---------------- | ----------------- |
-| Nix        | alejandra        | nixd             | default           |
-| Just       | just             |                  | default           |
-| Markdown   | prettier         | marksman         | default           |
-| YAML       | yamlfmt          | yamllint         | default           |
-| CSS        | prettier         |                  | default           |
-| HTML       | prettier         |                  | default           |
-| JSON       | prettier         |                  | default           |
-| TOML       | Even Better TOML | Even Better TOML | default           |
-| SQL        | SQL Tools        | SQLTools         | default           |
-| C#         | CSharpier        | C# Dev Kit       | csharp            |
+| Technology | Formatter        | Language Server  | Debugger   | Nix Configuration |
+| ---------- | ---------------- | ---------------- | ---------- | ----------------- |
+| Nix        | alejandra        | nixd             |            | default           |
+| Just       | just             |                  |            | default           |
+| Markdown   | prettier         | marksman         |            | default           |
+| YAML       | yamlfmt          | yamllint         |            | default           |
+| CSS        | prettier         |                  |            | default           |
+| HTML       | prettier         |                  |            | default           |
+| JSON       | prettier         |                  |            | default           |
+| TOML       | Even Better TOML | Even Better TOML |            | default           |
+| SQL        | SQL Tools        | SQLTools         |            | default           |
+| C#         | CSharpier        | C# Dev Kit       | C# Dev Kit | csharp            |
+| Rust       | rust-analyzer    | rust-analyzer    | CodeLLDB   | rust              |
 
 ## Managing Extensions
 

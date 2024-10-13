@@ -32,6 +32,8 @@ in {
     bluebrown.yamlfmt # Format YAML files with yamlfmt
     esbenp.prettier-vscode # Prettier formatter for Visual Studio Code
     mtxr.sqltools # SQLTools - Query, Connection and IntelliSense for MySQL, PostgreSQL, SQLite, MariaDB, MS SQL, Oracle and IBM DB2 databases
+    usernamehw.errorlens # Error Lens - Improve highlighting of errors, warnings and other language diagnostics
+    gruntfuggly.todo-tree # Todo Tree - Show TODO, FIXME and other markers in the file explorer
   ];
 
   # VSCode Settings that are to be applied in every configuration.  Configuration-specific settings will
