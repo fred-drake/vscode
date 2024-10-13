@@ -1,5 +1,3 @@
-# This file defines a set of common VSCode extensions to be installed.
-# It takes two arguments: pkgs (for built-in extensions) and nix-vscode-extensions (for marketplace extensions).
 {
   pkgs,
   lib,
@@ -9,6 +7,7 @@
     lib = lib;
   };
 in {
+  # VSCode Extensions that are to be installed in every configuration
   globalExtensions = with extensions; [
     ms-vscode-remote.remote-ssh # Enables remote development over SSH
     mikestead.dotenv # Support for .env file syntax highlighting and autocompletion
@@ -18,23 +17,25 @@ in {
     oderwat.indent-rainbow # Colorizes indentation for improved readability
     wayou.vscode-todo-highlight # Highlight TODO, FIXME and other annotations in code
     rodrigocfd.format-comment # Format comments in code
-    signageos.signageos-vscode-sops
-    continue.continue
-    pkief.material-icon-theme
-    editorconfig.editorconfig
-    saoudrizwan.claude-dev
-    be5invis.vscode-custom-css
-    tamasfe.even-better-toml
-    kamadorueda.alejandra
-    jnoortheen.nix-ide
-    skellock.just
-    arr.marksman
-    fnando.linter
-    bluebrown.yamlfmt
-    esbenp.prettier-vscode
-    mtxr.sqltools
+    signageos.signageos-vscode-sops # Syntax highlighting for SOPS (SecretOps) files
+    continue.continue # Continue - AI pair programmer
+    pkief.material-icon-theme # Material Icon Theme for VS Code
+    editorconfig.editorconfig # EditorConfig Support for Visual Studio Code
+    saoudrizwan.claude-dev # Claude Dev - AI pair programmer
+    be5invis.vscode-custom-css # Custom CSS for Visual Studio Code
+    tamasfe.even-better-toml # Better TOML support for Visual Studio Code
+    kamadorueda.alejandra # Formatter for Nix files
+    jnoortheen.nix-ide # Syntax highlighting for Nix and other languages used in the Nix ecosystem
+    skellock.just # Syntax highlighting for Justfiles
+    arr.marksman # Syntax highlighting for Markdown files with live preview and TOC support
+    fnando.linter # Linter for YAML files
+    bluebrown.yamlfmt # Format YAML files with yamlfmt
+    esbenp.prettier-vscode # Prettier formatter for Visual Studio Code
+    mtxr.sqltools # SQLTools - Query, Connection and IntelliSense for MySQL, PostgreSQL, SQLite, MariaDB, MS SQL, Oracle and IBM DB2 databases
   ];
 
+  # VSCode Settings that are to be applied in every configuration.  Configuration-specific settings will
+  # override if there is a conflict.
   globalSettings = {
     "extensions.autoUpdate" = false;
     "window.commandCenter" = true;
@@ -82,4 +83,15 @@ in {
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "nixd";
   };
+
+  # Nix packages that are to be installed with every configuration.
+  globalPackages = with pkgs; [
+    nixd # nix language server
+    jq # json processor
+    alejandra # formatter for Nix code
+    marksman # markdown linter
+    yamlfmt # formatter for YAML
+    yamllint # linter for YAML
+    vale # markdown linter
+  ];
 }

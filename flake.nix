@@ -35,7 +35,7 @@
           additionalPackages = [];
         };
 
-        vscode-csharp = make-vscode.mkVSCodeDerivationImpureExtensions {
+        vscode-csharp = make-vscode.mkVSCodeDerivation {
           name = "csharp";
           additionalExtensions = with extensions; [
             ms-dotnettools.csdevkit
@@ -55,6 +55,7 @@
             dotnet-sdk_8
             csharpier
           ];
+          impureExtensions = true;
         };
       in {
         checks = {
