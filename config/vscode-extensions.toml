@@ -109,3 +109,6 @@ extension_name = "go-lines"
 [[extensions]]
 publisher_name = "golang"
 extension_name = "go"
+[[extensions]]
+publisher_name = "neikeq"
+extension_name = "godot-csharp-vscode"

@@ -21,6 +21,7 @@ in {
       ms-dotnettools.csharp
       ms-dotnettools.vscode-dotnet-runtime
       csharpier.csharpier-vscode
+      neikeq.godot-csharp-vscode
     ];
     additionalVSCodeSettings = {
       "extensions.autoUpdate" = true;

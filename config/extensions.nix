@@ -23,8 +23,8 @@ in
           "eamodio"."gitlens" = vscode-utils.extensionFromVscodeMarketplace {
             name = "gitlens";
             publisher = "eamodio";
-            version = "2024.10.1316";
-            sha256 = "02xp8h7v69315mnbiwj3bia5ry08pckgi6bjyl6fcbyzlza80xry";
+            version = "2024.10.1405";
+            sha256 = "12hcbwcs5bf877cgan9n5ck37mqa7q7iaqsw9x0f8q9apx7nwifq";
           };
           "pkief"."material-icon-theme" = vscode-utils.extensionFromVscodeMarketplace {
             name = "material-icon-theme";
@@ -109,6 +109,12 @@ in
             publisher = "be5invis";
             version = "7.4.0";
             sha256 = "0psgyyq4ww20lh668z6p44fyj1vcw21chlqzlmd319pb6ck82ld5";
+          };
+          "neikeq"."godot-csharp-vscode" = vscode-utils.extensionFromVscodeMarketplace {
+            name = "godot-csharp-vscode";
+            publisher = "neikeq";
+            version = "0.2.1";
+            sha256 = "04gm1k1kh6aa3yzrbjhby10ddqs8bmsikiii6syg78syhzxhzfxh";
           };
           "fnando"."linter" = vscode-utils.extensionFromVscodeMarketplace {
             name = "linter";
