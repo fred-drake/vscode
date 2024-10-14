@@ -63,4 +63,22 @@ in {
       "RUST_SRC_PATH" = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
   };
+
+  golang = make-vscode.mkVSCodeDerivation {
+    name = "golang";
+    additionalExtensions = with extensions; [
+      golang.go
+      gofenix.go-lines
+    ];
+    additionalVSCodeSettings = {
+      "go-lines.lineLength" = 120;
+      "gopls"."ui.semanticTokens" = true;
+      "editor.defaultFormatter" = "gofenix.go-lines";
+    };
+    additionalPackages = with pkgs; [
+      go
+      golines
+      delve
+    ];
+  };
 }

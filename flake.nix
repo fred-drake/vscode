@@ -43,11 +43,13 @@
           default = configurations.default;
           csharp = configurations.csharp;
           rust = configurations.rust;
+          golang = configurations.golang;
         };
         apps = {
           default = make-vscode.mkApp configurations.default;
           csharp = make-vscode.mkApp configurations.csharp;
           rust = make-vscode.mkApp configurations.rust;
+          golang = make-vscode.mkApp configurations.golang;
         };
       };
     };

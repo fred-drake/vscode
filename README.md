@@ -29,7 +29,7 @@ The default configuration performs editing without settings for any particular l
 
 - Rust - `nix run github:fred-drake/vscode#rust`
 - C# - `nix run github:fred-drake/vscode#csharp`
-- Go - TBD
+- Go - `nix run github:fred-drake/vscode#golang`
 - Python - TBD
 - Javascript - TBD
 - Infrastructure as Code - TBD
@@ -69,19 +69,20 @@ And add it to your home-manager imports:
 
 ## Technology Support
 
-| Technology | Formatter        | Language Server  | Debugger   | Nix Configuration |
-| ---------- | ---------------- | ---------------- | ---------- | ----------------- |
-| Nix        | alejandra        | nixd             |            | default           |
-| Just       | just             |                  |            | default           |
-| Markdown   | prettier         | marksman         |            | default           |
-| YAML       | yamlfmt          | yamllint         |            | default           |
-| CSS        | prettier         |                  |            | default           |
-| HTML       | prettier         |                  |            | default           |
-| JSON       | prettier         |                  |            | default           |
-| TOML       | Even Better TOML | Even Better TOML |            | default           |
-| SQL        | SQL Tools        | SQLTools         |            | default           |
-| C#         | CSharpier        | C# Dev Kit       | C# Dev Kit | csharp            |
-| Rust       | rust-analyzer    | rust-analyzer    | CodeLLDB   | rust              |
+| Technology | Formatter        | Language Server    | Debugger   | Nix Configuration |
+| ---------- | ---------------- | ------------------ | ---------- | ----------------- |
+| Nix        | alejandra        | nixd               |            | default           |
+| Just       | just             |                    |            | default           |
+| Markdown   | prettier         | marksman           |            | default           |
+| YAML       | yamlfmt          | yamllint           |            | default           |
+| CSS        | prettier         |                    |            | default           |
+| HTML       | prettier         |                    |            | default           |
+| JSON       | prettier         |                    |            | default           |
+| TOML       | Even Better TOML | Even Better TOML   |            | default           |
+| SQL        | SQL Tools        | SQLTools           |            | default           |
+| C#         | CSharpier        | C# Dev Kit         | C# Dev Kit | csharp            |
+| Rust       | rust-analyzer    | rust-analyzer      | CodeLLDB   | rust              |
+| Go         | golines          | Go Language Server | Delve      | golang            |
 
 ## Managing Extensions
 

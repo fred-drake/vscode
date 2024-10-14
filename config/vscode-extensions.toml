@@ -103,3 +103,9 @@ extension_name = "errorlens"
 [[extensions]]
 publisher_name = "gruntfuggly"
 extension_name = "todo-tree"
+[[extensions]]
+publisher_name = "gofenix"
+extension_name = "go-lines"
+[[extensions]]
+publisher_name = "golang"
+extension_name = "go"
