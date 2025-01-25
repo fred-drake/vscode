@@ -86,7 +86,7 @@ And add it to your home-manager imports:
 
 ## Managing Extensions
 
-All extensions that are to be used in any configuration are stored in the [vscode-extensions.toml](./config/vscode-extensions.toml) file. To generate (or update to latest) the raw [extensions file](./config/extensions.nix) from this TOML file, call `just update-extensions`. The [the main nix flake](./flake.nix) pulls this extension information in order to declaratively build VSCode and its extensions.
+All extension names are stored in the [vscode-extensions.toml](./config/vscode-extensions.toml) file. To generate (or update to latest) the raw [extensions file](./config/extensions.nix) from this TOML file, call `just update-extensions`. The [the main nix flake](./flake.nix) pulls this extension information in order to declaratively build VSCode and its extensions.  Think of the extensions file as the lock file for all of your VSCode extensions.
 
 ## Global Extensions and Settings
 
