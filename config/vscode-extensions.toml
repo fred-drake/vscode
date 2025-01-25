@@ -1,4 +1,4 @@
-vscode_version = "1.94.2"
+vscode_version = "1.96.2"
 
 [[extensions]]
 publisher_name = "ms-vscode-remote"
@@ -112,3 +112,9 @@ extension_name = "go"
 [[extensions]]
 publisher_name = "neikeq"
 extension_name = "godot-csharp-vscode"
+[[extensions]]
+publisher_name = "RooVeterinaryInc"
+extension_name = "roo-cline"
+[[extensions]]
+publisher_name = "gaborv"
+extension_name = "flatbuffers"
