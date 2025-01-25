@@ -23,8 +23,8 @@ in
           "eamodio"."gitlens" = vscode-utils.extensionFromVscodeMarketplace {
             name = "gitlens";
             publisher = "eamodio";
-            version = "2025.1.2404";
-            sha256 = "1dwk3pv0fam5cx33azz4p6b0qdgqga7jp89ck1w5jkdy47cpj69h";
+            version = "2025.1.2504";
+            sha256 = "1rq6sd7ab1qrwvlp8xzqdj9yfw9x2h09vvb7s2l4a5grvy82gpqy";
           };
           "pkief"."material-icon-theme" = vscode-utils.extensionFromVscodeMarketplace {
             name = "material-icon-theme";
@@ -67,6 +67,12 @@ in
             publisher = "oderwat";
             version = "8.3.1";
             sha256 = "0iwd6y2x2nx52hd3bsav3rrhr7dnl4n79ln09picmnh1mp4rrs3l";
+          };
+          "vscodevim"."vim" = vscode-utils.extensionFromVscodeMarketplace {
+            name = "vim";
+            publisher = "vscodevim";
+            version = "1.29.0";
+            sha256 = "1r29gd6na3gyc38v8ynmc2c46mi38zms1p87y65v9n2rj94pqx97";
           };
           "mikestead"."dotenv" = vscode-utils.extensionFromVscodeMarketplace {
             name = "dotenv";
@@ -155,8 +161,8 @@ in
           "rooveterinaryinc"."roo-cline" = vscode-utils.extensionFromVscodeMarketplace {
             name = "roo-cline";
             publisher = "rooveterinaryinc";
-            version = "3.3.0";
-            sha256 = "1i8k6y84kpfs2mmp3psaic4csd73p8h3rnf5v7pz23brrcvy8y8n";
+            version = "3.3.1";
+            sha256 = "0hjcc76n44g46zpf864nkagdgx0046yzq0m235gawrv9rn8aybz2";
           };
           "gaborv"."flatbuffers" = vscode-utils.extensionFromVscodeMarketplace {
             name = "flatbuffers";

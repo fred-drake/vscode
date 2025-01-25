@@ -118,3 +118,6 @@ extension_name = "roo-cline"
 [[extensions]]
 publisher_name = "gaborv"
 extension_name = "flatbuffers"
+[[extensions]]
+publisher_name = "vscodevim"
+extension_name = "vim"

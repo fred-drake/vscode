@@ -35,12 +35,24 @@ in {
     usernamehw.errorlens # Error Lens - Improve highlighting of errors, warnings and other language diagnostics
     gruntfuggly.todo-tree # Todo Tree - Show TODO, FIXME and other markers in the file explorer
     gaborv.flatbuffers # FlatBuffers syntax highlighting and autocompletion
+    vscodevim.vim # Vim emulation for Visual Studio Code
   ];
 
   # VSCode Settings that are to be applied in every configuration.  Configuration-specific settings will
   # override if there is a conflict.
   globalSettings = {
+    "alejandra.program" = "alejandra";
+    "editor.fontFamily" = "JetBrainsMono Nerd Font";
+    "editor.fontSize" = 16;
+    "editor.inlayHints.fontSize" = 12;
+    "editor.lineNumbers" = "relative";
+    "editor.minimap.enabled" = false;
     "extensions.autoUpdate" = false;
+    "files.autoSave" = "onFocusChange";
+    "git.autofetch" = true;
+    "git.confirmSync" = false;
+    "nix.enableLanguageServer" = true;
+    "nix.serverPath" = "nixd";
     "window.commandCenter" = true;
     "workbench.iconTheme" = "material-icon-theme";
     "workbench.colorTheme" = "Jetbrains Dark Theme";
@@ -48,13 +60,76 @@ in {
     "workbench.preferredHighContrastColorTheme" = "Jetbrains Dark Theme";
     "workbench.preferredHighContrastLightColorTheme" = "Jetbrains Dark Theme";
     "workbench.preferredLightColorTheme" = "Jetbrains Dark Theme";
-    "editor.fontFamily" = "JetBrainsMono Nerd Font";
-    "git.confirmSync" = false;
-    "editor.fontSize" = 16;
-    "files.autoSave" = "onFocusChange";
-    "git.autofetch" = true;
     "workbench.startupEditor" = "none";
     "update.mode" = "none";
+    "vim.enableNeovim" = true;
+    "vim.highlightedyank.enable" = true;
+    "vim.leader" = "<Space>";
+    "vim.normalModeKeyBindingsNonRecursive" = [
+      {
+        "before" = ["<S-h>"];
+        "commands" = [":bprevious"];
+      }
+      {
+        "before" = ["<S-l>"];
+        "commands" = [":bnext"];
+      }
+      {
+        "before" = ["leader" "|"];
+        "commands" = [":vsplit"];
+      }
+      {
+        "before" = ["leader" "-"];
+        "commands" = [":split"];
+      }
+      {
+        "before" = ["<C-h>"];
+        "commands" = ["workbench.action.focusLeftGroup"];
+      }
+      {
+        "before" = ["<C-j>"];
+        "commands" = ["workbench.action.focusBelowGroup"];
+      }
+      {
+        "before" = ["<C-k>"];
+        "commands" = ["workbench.action.focusAboveGroup"];
+      }
+      {
+        "before" = ["<C-l>"];
+        "commands" = ["workbench.action.focusRightGroup"];
+      }
+      {
+        "before" = ["leader" "e"];
+        "commands" = ["workbench.explorer.fileView.focus"];
+      }
+      {
+        "before" = ["leader" "/"];
+        "commands" = ["workbench.action.findInFiles"];
+      }
+      {
+        "before" = ["leader" "f"];
+        "commands" = ["workbench.action.quickOpen"];
+      }
+      {
+        "before" = ["leader" "g"];
+        "commands" = ["workbench.view.scm"];
+        "when" = ["workbench.scm.active"];
+      }
+      {
+        "before" = ["leader" "c"];
+        "commands" = ["workbench.action.showCommands"];
+      }
+      {
+        "before" = ["leader" "s"];
+        "commands" = ["workbench.action.gotoSymbol"];
+      }
+      {
+        "before" = ["leader" "S"];
+        "commands" = ["workbench.action.showAllSymbols"];
+      }
+    ];
+    "vim.smartRelativeLine" = true;
+    "vim.useSystemClipboard" = true;
     "[nix]" = {
       "editor.defaultFormatter" = "kamadorueda.alejandra";
       "editor.formatOnPaste" = true;
@@ -82,9 +157,6 @@ in {
         "enabled" = false;
       };
     };
-    "alejandra.program" = "alejandra";
-    "nix.enableLanguageServer" = true;
-    "nix.serverPath" = "nixd";
   };
 
   # Nix packages that are to be installed with every configuration.
