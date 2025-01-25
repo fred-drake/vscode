@@ -21,7 +21,7 @@ in {
     continue.continue # Continue - AI pair programmer
     pkief.material-icon-theme # Material Icon Theme for VS Code
     editorconfig.editorconfig # EditorConfig Support for Visual Studio Code
-    saoudrizwan.claude-dev # Claude Dev - AI pair programmer
+    rooveterinaryinc.roo-cline # AI pair programmer for VS Code
     be5invis.vscode-custom-css # Custom CSS for Visual Studio Code
     tamasfe.even-better-toml # Better TOML support for Visual Studio Code
     kamadorueda.alejandra # Formatter for Nix files
@@ -34,6 +34,7 @@ in {
     mtxr.sqltools # SQLTools - Query, Connection and IntelliSense for MySQL, PostgreSQL, SQLite, MariaDB, MS SQL, Oracle and IBM DB2 databases
     usernamehw.errorlens # Error Lens - Improve highlighting of errors, warnings and other language diagnostics
     gruntfuggly.todo-tree # Todo Tree - Show TODO, FIXME and other markers in the file explorer
+    gaborv.flatbuffers # FlatBuffers syntax highlighting and autocompletion
   ];
 
   # VSCode Settings that are to be applied in every configuration.  Configuration-specific settings will
