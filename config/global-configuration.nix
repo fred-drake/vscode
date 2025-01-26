@@ -11,6 +11,7 @@ in {
   globalExtensions = with extensions; [
     ms-vscode-remote.remote-ssh # Enables remote development over SSH
     mikestead.dotenv # Support for .env file syntax highlighting and autocompletion
+    vscodevim.vim # Vim emulation for VSCode
     mobalic.jetbrains-dark-theme # Dark theme inspired by JetBrains IDEs
     eamodio.gitlens # Git supercharged - blame, code lens, and powerful comparison commands
     donjayamanne.githistory # View and search git log, file history, compare branches or commits
@@ -65,71 +66,14 @@ in {
     "vim.enableNeovim" = true;
     "vim.highlightedyank.enable" = true;
     "vim.leader" = "<Space>";
-    "vim.normalModeKeyBindingsNonRecursive" = [
-      {
-        "before" = ["<S-h>"];
-        "commands" = [":bprevious"];
-      }
-      {
-        "before" = ["<S-l>"];
-        "commands" = [":bnext"];
-      }
-      {
-        "before" = ["leader" "|"];
-        "commands" = [":vsplit"];
-      }
-      {
-        "before" = ["leader" "-"];
-        "commands" = [":split"];
-      }
-      {
-        "before" = ["<C-h>"];
-        "commands" = ["workbench.action.focusLeftGroup"];
-      }
-      {
-        "before" = ["<C-j>"];
-        "commands" = ["workbench.action.focusBelowGroup"];
-      }
-      {
-        "before" = ["<C-k>"];
-        "commands" = ["workbench.action.focusAboveGroup"];
-      }
-      {
-        "before" = ["<C-l>"];
-        "commands" = ["workbench.action.focusRightGroup"];
-      }
-      {
-        "before" = ["leader" "e"];
-        "commands" = ["workbench.explorer.fileView.focus"];
-      }
-      {
-        "before" = ["leader" "/"];
-        "commands" = ["workbench.action.findInFiles"];
-      }
-      {
-        "before" = ["leader" "f"];
-        "commands" = ["workbench.action.quickOpen"];
-      }
-      {
-        "before" = ["leader" "g"];
-        "commands" = ["workbench.view.scm"];
-        "when" = ["workbench.scm.active"];
-      }
-      {
-        "before" = ["leader" "c"];
-        "commands" = ["workbench.action.showCommands"];
-      }
-      {
-        "before" = ["leader" "s"];
-        "commands" = ["workbench.action.gotoSymbol"];
-      }
-      {
-        "before" = ["leader" "S"];
-        "commands" = ["workbench.action.showAllSymbols"];
-      }
-    ];
     "vim.smartRelativeLine" = true;
     "vim.useSystemClipboard" = true;
+    "vim.insertModeKeyBindings" = [
+      {
+        "before" = ["j" "k"];
+        "after" = ["<Esc>"];
+      }
+    ];
     "[nix]" = {
       "editor.defaultFormatter" = "kamadorueda.alejandra";
       "editor.formatOnPaste" = true;
@@ -158,6 +102,209 @@ in {
       };
     };
   };
+
+  globalKeyBindings = [
+    # Activates and hides the file explorer window
+    {
+      "key" = "space e";
+      "command" = "runCommands";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+      "args" = {
+        "commands" = ["workbench.action.toggleSidebarVisibility" "workbench.explorer.fileView.focus"];
+      };
+    }
+    {
+      "key" = "space e";
+      "command" = "workbench.action.toggleSidebarVisibility";
+      "when" = "vim.mode == 'Normal' && filesExplorerFocus";
+    }
+
+    #
+    # Operations performed directly on the file explorer window
+    #
+    {
+      # Rename file
+      "key" = "r";
+      "command" = "renameFile";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Copy file
+      "key" = "c";
+      "command" = "filesExplorer.copy";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Paste file
+      "key" = "p";
+      "command" = "filesExplorer.paste";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Cut file
+      "key" = "x";
+      "command" = "filesExplorer.cut";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Delete file
+      "key" = "d";
+      "command" = "deleteFile";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Create new file
+      "key" = "a";
+      "command" = "explorer.newFile";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Create new folder
+      "key" = "shift-a";
+      "command" = "explorer.newFolder";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Open file in a new vertical split
+      "key" = "s";
+      "command" = "explorer.openToSide";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      # Open file in a new horizontal split
+      "key" = "shift-s";
+      "command" = "runCommands";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+      "args" = {
+        "commands" = ["workbench.action.splitEditorDown" "explorer.openAndPassFocus"];
+      };
+    }
+    {
+      # Open the file and close the explorer window
+      "key" = "enter";
+      "command" = "runCommands";
+      "when" = "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+      "args" = {
+        "commands" = ["explorer.openAndPassFocus" "workbench.action.toggleSidebarVisibility"];
+      };
+    }
+
+    #
+    # Navigation commands
+    #
+
+    {
+      # Navigate next tab to the left
+      "key" = "shift-h";
+      "command" = "workbench.action.previousEditorInGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      # Navigate next tab to the right
+      "key" = "shift-l";
+      "command" = "workbench.action.nextEditorInGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      # Split the editor vertically
+      "key" = "space shift-\\";
+      "command" = "workbench.action.splitEditorRight";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      # Split the editor horizontally
+      "key" = "space -";
+      "command" = "workbench.action.splitEditorDown";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    # Move between editor groups in hjkl fashion
+    {
+      "key" = "ctrl-h";
+      "command" = "workbench.action.focusLeftGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "ctrl-j";
+      "command" = "workbench.action.focusBelowGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "ctrl-k";
+      "command" = "workbench.action.focusAboveGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "ctrl-l";
+      "command" = "workbench.action.focusRightGroup";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+
+    # Open AI Assistant Window
+    {
+      "key" = "space a";
+      "command" = "runCommands";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+      "args" = {
+        "commands" = ["workbench.action.toggleSidebarVisibility" "workbench.view.extension.roo-cline-ActivityBar"];
+      };
+    }
+    # Possible code actions
+    {
+      "key" = "space c a";
+      "command" = "editor.action.codeAction";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "space /";
+      "command" = "workbench.action.findInFiles";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+    }
+    {
+      "key" = "space f";
+      "command" = "workbench.action.quickOpen";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+    }
+    {
+      "key" = "space c c";
+      "command" = "workbench.action.showCommands";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+    }
+    {
+      "key" = "space s";
+      "command" = "workbench.action.gotoSymbol";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "space shift-s";
+      "command" = "workbench.action.showAllSymbols";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+    }
+    {
+      "key" = "shift-k";
+      "command" = "editor.action.showHover";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "space c r";
+      "command" = "editor.action.rename";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "space b d";
+      "command" = "workbench.action.closeActiveEditor";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "g d";
+      "command" = "editor.action.revealDefinition";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
+      "key" = "g r";
+      "command" = "editor.action.goToReferences";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+  ];
 
   # Nix packages that are to be installed with every configuration.
   globalPackages = with pkgs; [

@@ -7,6 +7,7 @@
     name ? "default",
     additionalExtensions ? [],
     additionalVSCodeSettings ? {},
+    additionalKeyBindings ? [],
     additionalPackages ? [],
     environmentVars ? {},
     impureExtensions ? false,
@@ -25,11 +26,17 @@
     vscode-config = (import ./global-configuration.nix) {inherit pkgs lib;};
     allExtensions = vscode-config.globalExtensions ++ additionalExtensions;
     allVSCodeSettings = vscode-config.globalSettings // additionalVSCodeSettings;
+    allKeyBindings = vscode-config.globalKeyBindings ++ additionalKeyBindings;
     allPackages = defaultPackages ++ additionalPackages;
     jsonSettings = pkgs.writeTextFile {
       name = "vscode-${name}-settings";
       text = builtins.toJSON allVSCodeSettings;
       destination = "/user/settings.json";
+    };
+    jsonKeyBindings = pkgs.writeTextFile {
+      name = "vscode-${name}-keybindings";
+      text = builtins.toJSON allKeyBindings;
+      destination = "/user/keybindings.json";
     };
     code-with-extensions = pkgs.vscode-with-extensions.override {
       vscode = pkgs.vscode;
@@ -66,6 +73,7 @@
             fi
             mkdir -p "$HOME/.config/vscode/${name}/data/User"
             ${pkgs.jq}/bin/jq . < ${jsonSettings}/user/settings.json > "$HOME/.config/vscode/${name}/data/User/settings.json"
+            ${pkgs.jq}/bin/jq . < ${jsonKeyBindings}/user/keybindings.json > "$HOME/.config/vscode/${name}/data/User/keybindings.json"
             ${pkgs.vscode}/bin/code --extensions-dir "$HOME/.config/vscode/${name}/extensions" --user-data-dir "$HOME/.config/vscode/${name}/data" "$@"
           ''} $out/bin/code
           chmod +x $out/bin/code
@@ -78,6 +86,7 @@
           cp ${pkgs.writeShellScript "code" ''
             mkdir -p $HOME/.config/vscode/${name}/data/User
             ${pkgs.jq}/bin/jq . < ${jsonSettings}/user/settings.json > $HOME/.config/vscode/${name}/data/User/settings.json
+            ${pkgs.jq}/bin/jq . < ${jsonKeyBindings}/user/keybindings.json > $HOME/.config/vscode/${name}/data/User/keybindings.json
             ${code-with-extensions}/bin/code --user-data-dir "$HOME/.config/vscode/${name}/data" "$@"
           ''} $out/bin/code
           chmod +x $out/bin/code
