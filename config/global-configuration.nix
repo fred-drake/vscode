@@ -63,15 +63,23 @@ in {
     "workbench.preferredLightColorTheme" = "Jetbrains Dark Theme";
     "workbench.startupEditor" = "none";
     "update.mode" = "none";
+    "vim.easymotion" = true;
     "vim.enableNeovim" = true;
     "vim.highlightedyank.enable" = true;
-    "vim.leader" = "<Space>";
+    "vim.leader" = "M";
     "vim.smartRelativeLine" = true;
     "vim.useSystemClipboard" = true;
     "vim.insertModeKeyBindings" = [
       {
         "before" = ["j" "k"];
         "after" = ["<Esc>"];
+      }
+    ];
+    # "vim.otherModesKeyBindingsNonRecursive" = [
+    "vim.normalModeKeyBindings" = [
+      {
+        "before" = ["m"];
+        "after" = ["leader" "leader" "s"];
       }
     ];
     "[nix]" = {
@@ -252,7 +260,7 @@ in {
     {
       "key" = "space c a";
       "command" = "editor.action.codeAction";
-      "when" = "vim.mode == 'Normal' && editorTextFocus";
+      "when" = "(vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualLine' || vim.mode == 'VisualBlock') && editorTextFocus";
     }
     {
       "key" = "space /";
