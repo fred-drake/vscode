@@ -257,17 +257,17 @@ in {
     {
       "key" = "space /";
       "command" = "workbench.action.findInFiles";
-      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || filesExplorerFocus)";
     }
     {
       "key" = "space f";
       "command" = "workbench.action.quickOpen";
-      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || filesExplorerFocus)";
     }
     {
       "key" = "space c c";
       "command" = "workbench.action.showCommands";
-      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || filesExplorerFocus)";
     }
     {
       "key" = "space s";
@@ -277,7 +277,7 @@ in {
     {
       "key" = "space shift-s";
       "command" = "workbench.action.showAllSymbols";
-      "when" = "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)";
+      "when" = "vim.mode == 'Normal' && (editorTextFocus || filesExplorerFocus)";
     }
     {
       "key" = "shift-k";
@@ -290,17 +290,22 @@ in {
       "when" = "vim.mode == 'Normal' && editorTextFocus";
     }
     {
+      "key" = "space b b";
+      "command" = "workbench.action.quickOpenPreviousRecentlyUsedEditor";
+      "when" = "vim.mode == 'Normal' && editorTextFocus";
+    }
+    {
       "key" = "space b d";
       "command" = "workbench.action.closeActiveEditor";
       "when" = "vim.mode == 'Normal' && editorTextFocus";
     }
     {
-      "key" = "g d";
+      "key" = "space g d";
       "command" = "editor.action.revealDefinition";
       "when" = "vim.mode == 'Normal' && editorTextFocus";
     }
     {
-      "key" = "g r";
+      "key" = "space g r";
       "command" = "editor.action.goToReferences";
       "when" = "vim.mode == 'Normal' && editorTextFocus";
     }
