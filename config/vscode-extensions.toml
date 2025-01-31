@@ -40,9 +40,6 @@ extension_name = "material-icon-theme"
 publisher_name = "editorconfig"
 extension_name = "editorconfig"
 [[extensions]]
-publisher_name = "saoudrizwan"
-extension_name = "claude-dev"
-[[extensions]]
 publisher_name = "be5invis"
 extension_name = "vscode-custom-css"
 [[extensions]]
