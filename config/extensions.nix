@@ -23,8 +23,8 @@ in
           "eamodio"."gitlens" = vscode-utils.extensionFromVscodeMarketplace {
             name = "gitlens";
             publisher = "eamodio";
-            version = "2025.1.3104";
-            sha256 = "1lbd93qd37k0jal9dd0bppkny6k3rinvlffbdcb4ba2zcpyw6gz2";
+            version = "2025.2.104";
+            sha256 = "06hsc73qkmhkmfiprayvg9c82xx3s4ch3br3h927ng14a8avnrkx";
           };
           "pkief"."material-icon-theme" = vscode-utils.extensionFromVscodeMarketplace {
             name = "material-icon-theme";
@@ -143,14 +143,14 @@ in
           "rooveterinaryinc"."roo-cline" = vscode-utils.extensionFromVscodeMarketplace {
             name = "roo-cline";
             publisher = "rooveterinaryinc";
-            version = "3.3.7";
-            sha256 = "1fyc8c1ribrsvsf7gmj1df9fqi2is2rmqw8r1dsldy7n782j6x0s";
+            version = "3.3.9";
+            sha256 = "1r0v0gblzzgb9w92zvvx55d1m2ya4p1zlckmjhwk02q0gg47cwf7";
           };
           "jnoortheen"."nix-ide" = vscode-utils.extensionFromVscodeMarketplace {
             name = "nix-ide";
             publisher = "jnoortheen";
-            version = "0.4.11";
-            sha256 = "0z6fl9r124swz7d7231yylabbb967i7dh55j3fqzm96wwyrvirv7";
+            version = "0.4.12";
+            sha256 = "0rdq9wnqfrj8k1g5fcaam5iahzd16bdpi3sa0n2gi0rh02kg55fy";
           };
           "mkhl"."direnv" = vscode-utils.extensionFromVscodeMarketplace {
             name = "direnv";
@@ -231,15 +231,15 @@ in
           "rust-lang"."rust-analyzer" = vscode-utils.extensionFromVscodeMarketplace {
             name = "rust-analyzer";
             publisher = "rust-lang";
-            version = "0.4.2287";
-            sha256 = "0bddap06980pq2vzam249h6fvncl1q3ap060xsp06ny8y5qk6wfq";
+            version = "0.4.2290";
+            sha256 = "184ssvrixx739g37ix5nj2zd2fvzg98z8shvw5jrmxmylwb46nn1";
             arch = "linux-x64";
           };
           "continue"."continue" = vscode-utils.extensionFromVscodeMarketplace {
             name = "continue";
             publisher = "continue";
-            version = "0.9.258";
-            sha256 = "0wjji8nj1jmcf0cwppmm70dpjh5w48r46pqfq6pdw9m0ihimbk16";
+            version = "0.9.259";
+            sha256 = "0mkfm6107zi1hnidrl74qhpnd9bdjld4gzfas4rfh8mpvbvbjsjg";
             arch = "linux-x64";
           };
         }))
@@ -261,15 +261,15 @@ in
         "rust-lang"."rust-analyzer" = vscode-utils.extensionFromVscodeMarketplace {
           name = "rust-analyzer";
           publisher = "rust-lang";
-          version = "0.4.2287";
-          sha256 = "182fw3hb1qm4b3am1j1l9hr2b0sr2c5pxa3m5ggqqg15d1kc1y59";
+          version = "0.4.2290";
+          sha256 = "0zi0s3blcrgnps8g8sf9vzayldvkn82w0nd4xxallnabc8rj4ysv";
           arch = "linux-arm64";
         };
         "continue"."continue" = vscode-utils.extensionFromVscodeMarketplace {
           name = "continue";
           publisher = "continue";
-          version = "0.9.258";
-          sha256 = "07ws3k212yajamikcabk4gqmdmi6bg3pyy3nm99wdvs312fhiaz6";
+          version = "0.9.259";
+          sha256 = "1jhkdpj4b6849hclvrhlzcxn44aa9dp2xb6mk4l7dvrxkxyqzhq6";
           arch = "linux-arm64";
         };
       }))
@@ -291,15 +291,15 @@ in
       "rust-lang"."rust-analyzer" = vscode-utils.extensionFromVscodeMarketplace {
         name = "rust-analyzer";
         publisher = "rust-lang";
-        version = "0.4.2287";
-        sha256 = "03bdsjfsp2ikr7g4d81s7dbrsk1mdg62sxb2yc1wrlsd3pyadbqc";
+        version = "0.4.2290";
+        sha256 = "0fv0kxqv3acgybz262zndihw59nl4xbywrfbyl60rygm19yr2y23";
         arch = "darwin-x64";
       };
       "continue"."continue" = vscode-utils.extensionFromVscodeMarketplace {
         name = "continue";
         publisher = "continue";
-        version = "0.9.258";
-        sha256 = "1n632m33da8fpfcb3zh1sdyfzr9nim26w78jb8p9a1vgknj8wq9b";
+        version = "0.9.259";
+        sha256 = "0lj0dwlbm5skfacnivyskfx2n84wgdb9123ywikjpm2j14ip97sr";
         arch = "darwin-x64";
       };
     }))
@@ -321,15 +321,15 @@ in
     "rust-lang"."rust-analyzer" = vscode-utils.extensionFromVscodeMarketplace {
       name = "rust-analyzer";
       publisher = "rust-lang";
-      version = "0.4.2287";
-      sha256 = "0h76c1jdk6b4wqkd52mrm1zsnj4bs91215h2pka833wsggzwq6wi";
+      version = "0.4.2290";
+      sha256 = "0xxl05ijbms0byj4zwzpaxfcnrn5d36vqq9g6vw29vqv8nj246aa";
       arch = "darwin-arm64";
     };
     "continue"."continue" = vscode-utils.extensionFromVscodeMarketplace {
       name = "continue";
       publisher = "continue";
-      version = "0.9.258";
-      sha256 = "0j7skap7kiknssjdpy9h15496llm28wi0d2pgjfc9yb7pcr0asbg";
+      version = "0.9.259";
+      sha256 = "1v6zp3ha78hxscc3h1xrxa02vd432xqcklazd4hgbf1iybfjia7p";
       arch = "darwin-arm64";
     };
   })
