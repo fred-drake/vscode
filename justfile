@@ -8,7 +8,7 @@ update-extensions:
 
 # Update flake
 update:
-    nix flake update --commit-lock-file
+    nix flake update
 
 # Update both extensions and flake
 full-update: update update-extensions
