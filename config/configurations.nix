@@ -17,18 +17,8 @@ in {
   csharp = make-vscode.mkVSCodeDerivation {
     name = "csharp";
     additionalExtensions = with extensions; [
-      ms-dotnettools.csdevkit
-      ms-dotnettools.csharp
-      ms-dotnettools.vscode-dotnet-runtime
-      csharpier.csharpier-vscode
-      neikeq.godot-csharp-vscode
     ];
     additionalVSCodeSettings = {
-      "extensions.autoUpdate" = true;
-      "[csharp]" = {
-        "editor.defaultFormatter" = "csharpier.csharpier-vscode";
-        "editor.formatOnSave" = true;
-      };
     };
     additionalPackages = with pkgs; [
       dotnet-sdk_8
@@ -41,20 +31,12 @@ in {
     name = "rust";
     additionalExtensions = with extensions;
       [
-        rust-lang.rust-analyzer
-        fill-labs.dependi
       ]
       # nix4vscode can't read this, adding through nix-vscode-extensions
       ++ [
         marketplace.vadimcn.vscode-lldb
       ];
     additionalVSCodeSettings = {
-      "[rust]" = {
-        "editor.defaultFormatter" = "rust-lang.rust-analyzer";
-        "editor.formatOnSave" = true;
-      };
-      # Add the todo! macro as a TODO highlight
-      "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)|todo!";
     };
     additionalPackages = with pkgs; [
       rust-bin.stable.latest.default
@@ -68,13 +50,8 @@ in {
   golang = make-vscode.mkVSCodeDerivation {
     name = "golang";
     additionalExtensions = with extensions; [
-      golang.go
-      gofenix.go-lines
     ];
     additionalVSCodeSettings = {
-      "go-lines.lineLength" = 120;
-      "gopls"."ui.semanticTokens" = true;
-      "editor.defaultFormatter" = "gofenix.go-lines";
     };
     additionalPackages = with pkgs; [
       go

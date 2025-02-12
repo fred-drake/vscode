@@ -37,6 +37,15 @@ in {
     gruntfuggly.todo-tree # Todo Tree - Show TODO, FIXME and other markers in the file explorer
     gaborv.flatbuffers # FlatBuffers syntax highlighting and autocompletion
     vscodevim.vim # Vim emulation for Visual Studio Code
+    ms-dotnettools.csdevkit
+    ms-dotnettools.csharp
+    ms-dotnettools.vscode-dotnet-runtime
+    csharpier.csharpier-vscode
+    neikeq.godot-csharp-vscode
+    rust-lang.rust-analyzer
+    fill-labs.dependi
+    golang.go
+    gofenix.go-lines
   ];
 
   # VSCode Settings that are to be applied in every configuration.  Configuration-specific settings will
@@ -111,6 +120,19 @@ in {
         "enabled" = false;
       };
     };
+    "[csharp]" = {
+      "editor.defaultFormatter" = "csharpier.csharpier-vscode";
+      "editor.formatOnSave" = true;
+    };
+    "[rust]" = {
+      "editor.defaultFormatter" = "rust-lang.rust-analyzer";
+      "editor.formatOnSave" = true;
+    };
+    # Add the todo! macro as a TODO highlight
+    "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)|todo!";
+    "go-lines.lineLength" = 120;
+    "gopls"."ui.semanticTokens" = true;
+    "editor.defaultFormatter" = "gofenix.go-lines";
   };
 
   globalKeyBindings = [
